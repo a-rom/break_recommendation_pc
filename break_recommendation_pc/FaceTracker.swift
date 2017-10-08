@@ -123,7 +123,7 @@ class FaceTracker: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
             let detector : CIDetector = CIDetector(
                 ofType: CIDetectorTypeFace,
                 context: nil,
-                options:[CIDetectorAccuracy: CIDetectorAccuracyHigh] )!
+                options:[CIDetectorAccuracy: CIDetectorAccuracyLow] )!
             
             let options = [CIDetectorSmile : true, CIDetectorEyeBlink : true]
             

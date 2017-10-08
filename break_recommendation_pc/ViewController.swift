@@ -8,6 +8,7 @@
 
 import Cocoa
 import CoreImage
+import AVFoundation
 import AppKit
 
 //var databaseRef:DatabaseReference!
@@ -59,7 +60,7 @@ class ViewController: NSViewController {
         //formatter.dateFormat = "MM-dd-HH-mm-ss"
         //let moveFace:[String:Any] = ["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y];
         //databaseRef.childByAutoId().child(deviceId).setValue(moveFace)
-        print("1")
+        print("100")
         
         
         
