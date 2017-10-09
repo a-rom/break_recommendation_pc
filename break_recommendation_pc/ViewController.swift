@@ -20,18 +20,19 @@ class ViewController: NSViewController {
     
     
     @IBOutlet weak var tired: NSButton?
-    
-    
     var faceTracker:FaceTracker? = nil;
+    
     //@IBOutlet var cameraView :NSView?//viewController上に一つviewを敷いてそれと繋いでおく
-    @IBOutlet weak var cameraView: NSImageView!
+    //@IBOutlet weak var cameraView: NSImageView!
+    
+    
     
     var rectView = NSView()
     override func viewWillAppear() {
         //databaseRef = Database.database().reference()
         self.rectView.layer?.borderWidth = 3//四角い枠を用意しておく
         self.view.addSubview(self.rectView)
-        faceTracker = FaceTracker(view: self.cameraView!, findface:{arr in
+        faceTracker = FaceTracker(view: self.view, findface:{arr in
             let rect = arr[0];//一番の顔だけ使う
             self.rectView.frame = rect;//四角い枠を顔の位置に移動する
             
@@ -55,12 +56,12 @@ class ViewController: NSViewController {
     
     
     func moveFace(){
-        //let date = Date()
-        //let dateStr = formatter.string(from: date)
-        //formatter.dateFormat = "MM-dd-HH-mm-ss"
-        //let moveFace:[String:Any] = ["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y];
+        let date = Date()
+        let dateStr = formatter.string(from: date)
+        formatter.dateFormat = "MM-dd-HH-mm-ss"
+        let moveFace:[String:Any] = ["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y];
         //databaseRef.childByAutoId().child(deviceId).setValue(moveFace)
-        print("100")
+        print(["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y])
         
         
         
