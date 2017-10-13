@@ -16,12 +16,6 @@ var faceRect = CGRect()
 
 
 
-
-
-
-
-
-
 class FaceTracker: NSObject,AVCaptureVideoDataOutputSampleBufferDelegate {
     let captureSession = AVCaptureSession()
     let videoDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)

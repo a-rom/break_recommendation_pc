@@ -26,9 +26,10 @@ class ViewController: NSViewController {
     //@IBOutlet weak var cameraView: NSImageView!
     
     
-    
+    var timer : Timer?
     var rectView = NSView()
-    override func viewWillAppear() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         //databaseRef = Database.database().reference()
         self.rectView.layer?.borderWidth = 3//四角い枠を用意しておく
         self.view.addSubview(self.rectView)
@@ -38,13 +39,22 @@ class ViewController: NSViewController {
             
         })
         //Timer.scheduledTimer(timeInterval: 10.00, target: self, selector: #selector(self.onUpdate), userInfo: nil, repeats: false)
-        
-        Timer.scheduledTimer(timeInterval: 1.00, target: self, selector: #selector(self.moveFace), userInfo: nil, repeats: true)
-        
+        timerCounter()
+
         
         
 
     }
+    
+    func timerCounter() {
+         timer = Timer.scheduledTimer(timeInterval: 1.00, target: self, selector: #selector(self.moveFace), userInfo: nil, repeats: true)
+        timer?.fire()
+        
+        
+    }
+    
+    
+    
     func onUpdate(){
         
         //REST_COUNT = COUNT / 3
@@ -57,11 +67,12 @@ class ViewController: NSViewController {
     
     func moveFace(){
         let date = Date()
-        let dateStr = formatter.string(from: date)
-        formatter.dateFormat = "MM-dd-HH-mm-ss"
-        let moveFace:[String:Any] = ["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y];
+        //let dateStr = formatter.string(from: date)
+        //formatter.dateFormat = "MM-dd-HH-mm-ss"
+        let moveFace:[String:Any] = ["origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y];
         //databaseRef.childByAutoId().child(deviceId).setValue(moveFace)
-        print(["time":dateStr,"origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y])
+        print(["origin_x": faceRect.origin.x,"origin_y": faceRect.origin.y])
+        
         
         
         
